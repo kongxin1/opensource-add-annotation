@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="org.eclipse.jdt.launching.localJavaApplication">
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
+<listEntry value="/active-mq/src/Main.java"/>
+</listAttribute>
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
+<listEntry value="1"/>
+</listAttribute>
+<stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="Main"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROGRAM_ARGUMENTS" value="-Xms1G &#13;&#10;-Xmx1G &#13;&#10;-Djava.util.logging.config.file=logging.properties &#13;&#10;-Dhawtio.realm=activemq &#13;&#10;-Dhawtio.role=admins &#13;&#10;-Dhawtio.rolePrincipalClasses=org.apache.activemq.jaas.GroupPrincipal&#13;&#10;-Djava.security.auth.login.config=C:\Users\孔新\Desktop\apache-activemq-5.13.0\conf\login.config&#13;&#10;-Dactivemq.classpath=C:\Users\孔新\Desktop\apache-activemq-5.13.0\conf;C:\Users\孔新\Desktop\apache-activemq-5.13.0/conf;&#13;&#10;-Dactivemq.home=&quot;C:\Users\孔新\Desktop\apache-activemq-5.13.0&quot; &#13;&#10;-Dactivemq.base=C:\Users\孔新\Desktop\apache-activemq-5.13.0&#13;&#10;-Dactivemq.conf=C:\Users\孔新\Desktop\apache-activemq-5.13.0\conf&#13;&#10;-Dactivemq.data=C:\Users\孔新\Desktop\apache-activemq-5.13.0\data &#13;&#10;-Djava.io.tmpdir=C:\Users\孔新\Desktop\apache-activemq-5.13.0\data\tmp &#13;&#10;start"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="active-mq"/>
+</launchConfiguration>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<typeInfoHistroy>
+<typeInfo handle="=active-mq/src&lt;org.apache.activemq.xbean{XBeanBrokerFactory.java[XBeanBrokerFactory" modifiers="1" timestamp="1467525454485"/>
+<typeInfo handle="=active-mq/src&lt;org.apache.activemq.store{TransactionRecoveryListener.java[TransactionRecoveryListener" modifiers="513" timestamp="1448862798000"/>
+<typeInfo handle="=active-mq/src&lt;org.apache.activemq.broker.region{Queue.java[Queue[BatchMessageRecoveryListener" modifiers="0" timestamp="1470752239466"/>
+<typeInfo handle="=active-mq/src&lt;org.apache.activemq.store.kahadb.scheduler{JobSchedulerStoreImpl.java[JobSchedulerStoreImpl" modifiers="1" timestamp="1448862798000"/>
+<typeInfo handle="=active-mq/src&lt;org.apache.activemq.store.kahadb.scheduler{JobSchedulerKahaDBMetaData.java[JobSchedulerKahaDBMetaData[JobSchedulerMarshaller" modifiers="2" timestamp="1448862798000"/>
+<typeInfo handle="=active-mq/src&lt;org.apache.activemq.broker.scheduler{JobSchedulerFacade.java[JobSchedulerFacade" modifiers="1" timestamp="1448862798000"/>
+<typeInfo handle="=active-mq/src&lt;org.apache.activemq.broker.scheduler.memory{InMemoryJobSchedulerStore.java[InMemoryJobSchedulerStore" modifiers="1" timestamp="1468331335812"/>
+<typeInfo handle="=active-mq/src&lt;org.apache.activemq.broker.scheduler.memory{InMemoryJob.java[InMemoryJob" modifiers="1" timestamp="1468245772187"/>
+<typeInfo handle="=active-mq/src&lt;org.apache.activemq.store.kahadb.disk.util{VariableMarshaller.java[VariableMarshaller" modifiers="1025" timestamp="1467987204542"/>
+<typeInfo handle="=active-mq/src&lt;org.apache.activemq.broker.region.virtual{MirroredQueue.java[MirroredQueue" modifiers="1" timestamp="1468635098994"/>
+<typeInfo handle="=active-mq/C:\/Users\/孔新\/Desktop\/apache-activemq-5.13.0\/activemq-all-5.13.0.jar&lt;javax.jms(MessageProducer.class[MessageProducer" modifiers="1537" timestamp="1468727280929"/>
+<typeInfo handle="=active-mq/src&lt;org.apache.activemq.advisory{AdvisorySupport.java[AdvisorySupport" modifiers="17" timestamp="1468673261836"/>
+<typeInfo handle="=active-mq/src&lt;org.apache.activemq.advisory{AdvisoryBroker.java[AdvisoryBroker" modifiers="1" timestamp="1468672367565"/>
+<typeInfo handle="=active-mq/src&lt;org.apache.activemq.command{ActiveMQQueue.java[ActiveMQQueue" modifiers="1" timestamp="1448862798000"/>
+<typeInfo handle="=active-mq/src&lt;org.apache.activemq.transport{ResponseCorrelator.java[ResponseCorrelator" modifiers="1" timestamp="1448862798000"/>
+<typeInfo handle="=active-mq/src&lt;org.apache.activemq.openwire{OpenWireFormatFactory.java[OpenWireFormatFactory" modifiers="1" timestamp="1468745245686"/>
+<typeInfo handle="=active-mq/src&lt;org.apache.activemq.transport{DefaultTransportListener.java[DefaultTransportListener" modifiers="1" timestamp="1448862798000"/>
+<typeInfo handle="=active-mq/src&lt;org.apache.activemq.transport.tcp{TcpTransportFactory.java[TcpTransportFactory" modifiers="1" timestamp="1468745962386"/>
+<typeInfo handle="=active-mq/C:\/Users\/孔新\/Desktop\/apache-activemq-5.13.0\/activemq-all-5.13.0.jar&lt;org.apache.activemq.broker.region(RegionBroker.class[RegionBroker" modifiers="33" timestamp="1468727280929"/>
+<typeInfo handle="=active-mq/src&lt;org.apache.activemq.broker{BrokerService.java[BrokerService" modifiers="1" timestamp="1468661153894"/>
+<typeInfo handle="=active-mq/src&lt;org.apache.activemq.thread{DedicatedTaskRunner.java[DedicatedTaskRunner" modifiers="0" timestamp="1468500557500"/>
+<typeInfo handle="=active-mq/src&lt;org.apache.activemq.command{ConsumerInfo.java[ConsumerInfo" modifiers="1" timestamp="1448862798000"/>
+<typeInfo handle="=active-mq/src&lt;org.apache.activemq.broker.region{RegionBroker.java[RegionBroker" modifiers="1" timestamp="1469935992245"/>
+<typeInfo handle="=active-mq/src&lt;org.apache.activemq.broker{MapTransportConnectionStateRegister.java[MapTransportConnectionStateRegister" modifiers="1" timestamp="1469236964181"/>
+<typeInfo handle="=active-mq/src&lt;org.apache.activemq.openwire.v1{SessionInfoMarshaller.java[SessionInfoMarshaller" modifiers="1" timestamp="1448862798000"/>
+<typeInfo handle="=active-mq/src&lt;org.apache.activemq.openwire{OpenWireFormat.java[OpenWireFormat" modifiers="17" timestamp="1468887426413"/>
+<typeInfo handle="=active-mq/src&lt;org.apache.activemq.broker.region{DestinationFactoryImpl.java[DestinationFactoryImpl" modifiers="1" timestamp="1468588394119"/>
+<typeInfo handle="=active-mq/src&lt;org.apache.activemq.filter{MessageEvaluationContext.java[MessageEvaluationContext" modifiers="1" timestamp="1468333939828"/>
+<typeInfo handle="=active-mq/src&lt;org.apache.activemq.broker.region.policy{SimpleDispatchPolicy.java[SimpleDispatchPolicy" modifiers="1" timestamp="1468724655472"/>
+<typeInfo handle="=active-mq/src&lt;org.apache.activemq.command{RemoveInfo.java[RemoveInfo" modifiers="1" timestamp="1448862798000"/>
+<typeInfo handle="=active-mq/src&lt;org.apache.activemq.broker.region{AbstractSubscription.java[AbstractSubscription" modifiers="1025" timestamp="1469941799966"/>
+<typeInfo handle="=active-mq/src&lt;org.apache.activemq.command{CommandTypes.java[CommandTypes" modifiers="513" timestamp="1468650977367"/>
+<typeInfo handle="=active-mq/src&lt;org.apache.activemq.command{WireFormatInfo.java[WireFormatInfo" modifiers="1" timestamp="1468745272294"/>
+<typeInfo handle="=active-mq/src&lt;org.apache.activemq.command{ActiveMQMessage.java[ActiveMQMessage" modifiers="1" timestamp="1468658383685"/>
+<typeInfo handle="=active-mq/src&lt;org.apache.activemq.thread{TaskRunnerFactory.java[TaskRunnerFactory" modifiers="1" timestamp="1468501038863"/>
+<typeInfo handle="=active-mq/src&lt;org.apache.activemq.broker.region{Topic.java[Topic" modifiers="1" timestamp="1469941940112"/>
+<typeInfo handle="=active-mq/src&lt;org.apache.activemq.broker{TransportConnection.java[TransportConnection" modifiers="1" timestamp="1470183600003"/>
+<typeInfo handle="=active-mq/src&lt;org.apache.activemq{ActiveMQMessageConsumer.java[ActiveMQMessageConsumer" modifiers="1" timestamp="1448862798000"/>
+<typeInfo handle="=active-mq/src&lt;org.apache.activemq.broker.region{TopicRegion.java[TopicRegion" modifiers="1" timestamp="1468422543946"/>
+<typeInfo handle="=active-mq/src&lt;org.apache.activemq.broker{TransportConnector.java[TransportConnector" modifiers="1" timestamp="1469251942976"/>
+<typeInfo handle="=active-mq/src&lt;org.apache.activemq.transport.tcp{TcpTransportServer.java[TcpTransportServer" modifiers="1" timestamp="1469197449625"/>
+<typeInfo handle="=active-mq/src&lt;org.apache.activemq.transport.tcp{TcpTransport.java[TcpTransport" modifiers="1" timestamp="1469198255312"/>
+<typeInfo handle="=Test/C:\/Program Files\/Java\/jre7\/lib\/rt.jar&lt;sun.rmi.transport.tcp(TCPConnection.class[TCPConnection" modifiers="33" timestamp="1465049687849"/>
+<typeInfo handle="=Test/C:\/Program Files\/Java\/jre7\/lib\/rt.jar&lt;java.awt(Queue.class[Queue" modifiers="32" timestamp="1465049687849"/>
+<typeInfo handle="=active-mq/src&lt;org.apache.activemq.broker.region{Queue.java[Queue" modifiers="1" timestamp="1470752239466"/>
+<typeInfo handle="=active-mq/src&lt;org.apache.activemq.thread{PooledTaskRunner.java[PooledTaskRunner" modifiers="0" timestamp="1468500929951"/>
+<typeInfo handle="=Test/C:\/Program Files\/Java\/jre7\/lib\/rt.jar&lt;javax.activation(CommandInfo.class[CommandInfo" modifiers="33" timestamp="1465049687849"/>
+<typeInfo handle="=active-mq/src&lt;org.apache.activemq.command{ConnectionInfo.java[ConnectionInfo" modifiers="1" timestamp="1468748746996"/>
+<typeInfo handle="=active-mq/src&lt;org.apache.activemq.store.memory{MemoryPersistenceAdapter.java[MemoryPersistenceAdapter" modifiers="1" timestamp="1471000359616"/>
+<typeInfo handle="=active-mq/src&lt;org.apache.activemq.command{TransactionId.java[TransactionId" modifiers="1025" timestamp="1448862798000"/>
+<typeInfo handle="=active-mq/src&lt;org.apache.activemq.command{LocalTransactionId.java[LocalTransactionId" modifiers="1" timestamp="1471009629968"/>
+<typeInfo handle="=active-mq/src&lt;org.apache.activemq.store.memory{MemoryTopicMessageStore.java[MemoryTopicMessageStore" modifiers="1" timestamp="1471004781900"/>
+<typeInfo handle="=active-mq/src&lt;org.apache.activemq.store.kahadb{KahaDBPersistenceAdapter.java[KahaDBPersistenceAdapter" modifiers="1" timestamp="1471100406468"/>
+<typeInfo handle="=active-mq/src&lt;org.apache.activemq.store.kahadb.disk.util{StringMarshaller.java[StringMarshaller" modifiers="1" timestamp="1448862798000"/>
+</typeInfoHistroy>

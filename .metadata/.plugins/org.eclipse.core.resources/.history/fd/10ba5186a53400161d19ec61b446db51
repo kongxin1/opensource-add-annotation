@@ -1,0 +1,26 @@
+package com.kx.core;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+public class URLHandler {
+	private static Logger logger = LoggerFactory.getLogger(URLHandler.class);
+	// 线程数
+	private int thread = 30;
+
+	public void start() {
+		for (int i = 0; i < thread; i++) {
+			URLRunnable t = new URLRunnable();
+			logger.info("URL获取线程的第" + (i + 1) + "个线程开始初始化");
+			try {
+				t.init();
+			} catch (Exception e) {
+				logger.error("HTML获取线程的第" + (i + 1) + "个线程初始化失败", e);
+				continue;
+			}
+			logger.info("URL获取线程的第" + (i + 1) + "个线程初始化完毕");
+			Thread thread = new Thread(t);
+			thread.start();
+		}
+	}
+}

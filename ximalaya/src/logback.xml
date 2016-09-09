@@ -1,0 +1,36 @@
+<?xml version="1.0"?>  
+<configuration>  
+  
+    <!-- ch.qos.logback.core.ConsoleAppender 控制台输出 -->  
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">  
+        <encoder>  
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %logger{36} - %msg%n</pattern>  
+        </encoder>  
+    </appender>  
+    <!-- 输出到文件 -->
+	  <appender name="file"  
+	        class="ch.qos.logback.core.rolling.RollingFileAppender">  
+	        <Encoding>UTF-8</Encoding>  
+	         
+	        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">  
+	            <FileNamePattern>C:/Users/孔新/Desktop/clawer-%d{yyyy-MM-dd}_%i.log  
+	            </FileNamePattern>  
+	            <TimeBasedFileNamingAndTriggeringPolicy  
+	                class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">  
+	                <MaxFileSize>5MB</MaxFileSize> 
+	                <maxHistory>10</maxHistory> 
+	            </TimeBasedFileNamingAndTriggeringPolicy>  
+	        </rollingPolicy>  
+	        <layout class="ch.qos.logback.classic.PatternLayout">  
+	            <pattern>%d{HH:mm:ss.SSS} [%thread] %logger{36} - %msg%n  
+	            </pattern>  
+	        </layout>  
+	    </appender>  
+    <!-- 日志级别 -->  
+    <root>  
+        <level value="info" />  
+        <appender-ref ref="console" />  
+        <appender-ref ref="file"/>
+    </root>  
+  
+</configuration>  

@@ -1,0 +1,228 @@
+package org.apache.activemq.store.kahadb.data;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.ArrayList;
+
+import org.apache.activemq.protobuf.Buffer;
+import org.apache.activemq.protobuf.CodedInputStream;
+import org.apache.activemq.protobuf.CodedOutputStream;
+import org.apache.activemq.protobuf.InvalidProtocolBufferException;
+
+public final class KahaDestination extends KahaDestinationBase<KahaDestination> {
+	public ArrayList<String> missingFields() {
+		ArrayList missingFields = super.missingFields();
+		/* 52 */if (!hasType()) {
+			/* 53 */missingFields.add("type");
+			/*     */}
+		/* 55 */if (!hasName()) {
+			/* 56 */missingFields.add("name");
+			/*     */}
+		/* 58 */return missingFields;
+		/*     */}
+	/*     */
+	/*     */public void clear() {
+		/* 62 */super.clear();
+		/* 63 */clearType();
+		/* 64 */clearName();
+		/*     */}
+	/*     */
+	/*     */public KahaDestination clone() {
+		/* 68 */return new KahaDestination().mergeFrom(this);
+		/*     */}
+	/*     */
+	/*     */public KahaDestination mergeFrom(KahaDestination other) {
+		/* 72 */if (other.hasType()) {
+			/* 73 */setType(other.getType());
+			/*     */}
+		/* 75 */if (other.hasName()) {
+			/* 76 */setName(other.getName());
+			/*     */}
+		/* 78 */return this;
+		/*     */}
+	/*     */
+	/*     */public int serializedSizeUnframed() {
+		/* 82 */if (this.memoizedSerializedSize != -1) {
+			/* 83 */return this.memoizedSerializedSize;
+			/*     */}
+		/* 85 */int size = 0;
+		/* 86 */if (hasType()) {
+			/* 87 */size += CodedOutputStream.computeEnumSize(1, getType().getNumber());
+			/*     */}
+		/* 89 */if (hasName()) {
+			/* 90 */size += CodedOutputStream.computeStringSize(2, getName());
+			/*     */}
+		/* 92 */this.memoizedSerializedSize = size;
+		/* 93 */return size;
+		/*     */}
+	/*     */
+	/*     */public KahaDestination mergeUnframed(CodedInputStream input) throws IOException {
+		/*     */while (true) {
+			/* 98 */int tag = input.readTag();
+			/* 99 */if ((tag & 0x7) == 4) {
+				/* 100 */return this;
+				/*     */}
+			/* 102 */switch (tag) {
+			/*     */case 0:
+					/* 104 */return this;
+					/*     */default:
+					/* 106 */break;
+				/*     */case 8:
+					/* 110 */int t = input.readEnum();
+					/* 111 */DestinationType value = DestinationType.valueOf(t);
+					/* 112 */if (value != null) {
+						/* 113 */setType(value);
+						/*     */}
+					/*     */
+					/* 116 */break;
+				/*     */case 18:
+					/* 118 */setName(input.readString());
+					/*     */}
+			/*     */}
+		/*     */}
+	/*     */
+	/*     */public void writeUnframed(CodedOutputStream output) throws IOException {
+		/* 124 */if (hasType()) {
+			/* 125 */output.writeEnum(1, getType().getNumber());
+			/*     */}
+		/* 127 */if (hasName())
+			/* 128 */output.writeString(2, getName());
+		/*     */}
+	/*     */
+	/*     */public static KahaDestination parseUnframed(CodedInputStream data) throws InvalidProtocolBufferException,
+			IOException
+	/*     */{
+		/* 133 */return (KahaDestination) new KahaDestination().mergeUnframed(data).checktInitialized();
+		/*     */}
+	/*     */
+	/*     */public static KahaDestination parseUnframed(Buffer data) throws InvalidProtocolBufferException {
+		/* 137 */return (KahaDestination) ((KahaDestination) new KahaDestination().mergeUnframed(data))
+				.checktInitialized();
+		/*     */}
+	/*     */
+	/*     */public static KahaDestination parseUnframed(byte[] data) throws InvalidProtocolBufferException {
+		/* 141 */return (KahaDestination) ((KahaDestination) new KahaDestination().mergeUnframed(data))
+				.checktInitialized();
+		/*     */}
+	/*     */
+	/*     */public static KahaDestination parseUnframed(InputStream data) throws InvalidProtocolBufferException,
+			IOException {
+		/* 145 */return (KahaDestination) ((KahaDestination) new KahaDestination().mergeUnframed(data))
+				.checktInitialized();
+		/*     */}
+	/*     */
+	/*     */public static KahaDestination parseFramed(CodedInputStream data) throws InvalidProtocolBufferException,
+			IOException {
+		/* 149 */return (KahaDestination) ((KahaDestination) new KahaDestination().mergeFramed(data))
+				.checktInitialized();
+		/*     */}
+	/*     */
+	/*     */public static KahaDestination parseFramed(Buffer data) throws InvalidProtocolBufferException {
+		/* 153 */return (KahaDestination) ((KahaDestination) new KahaDestination().mergeFramed(data))
+				.checktInitialized();
+		/*     */}
+	/*     */
+	/*     */public static KahaDestination parseFramed(byte[] data) throws InvalidProtocolBufferException {
+		/* 157 */return (KahaDestination) ((KahaDestination) new KahaDestination().mergeFramed(data))
+				.checktInitialized();
+		/*     */}
+	/*     */
+	/*     */public static KahaDestination parseFramed(InputStream data) throws InvalidProtocolBufferException, IOException {
+		/* 161 */return (KahaDestination) ((KahaDestination) new KahaDestination().mergeFramed(data))
+				.checktInitialized();
+		/*     */}
+	/*     */
+	/*     */public String toString() {
+		/* 165 */return toString(new StringBuilder(), "").toString();
+		/*     */}
+	/*     */
+	/*     */public StringBuilder toString(StringBuilder sb, String prefix) {
+		/* 169 */if (hasType()) {
+			/* 170 */sb.append(prefix + "type: ");
+			/* 171 */sb.append(getType());
+			/* 172 */sb.append("\n");
+			/*     */}
+		/* 174 */if (hasName()) {
+			/* 175 */sb.append(prefix + "name: ");
+			/* 176 */sb.append(getName());
+			/* 177 */sb.append("\n");
+			/*     */}
+		/* 179 */return sb;
+		/*     */}
+	/*     */
+	/*     */public boolean equals(Object obj) {
+		/* 183 */if (obj == this) {
+			/* 184 */return true;
+			/*     */}
+		/* 186 */if ((obj == null) || (obj.getClass() != KahaDestination.class)) {
+			/* 187 */return false;
+			/*     */}
+		/* 189 */return equals((KahaDestination) obj);
+		/*     */}
+	/*     */
+	/*     */public boolean equals(KahaDestination obj) {
+		/* 193 */if ((hasType() ^ obj.hasType()))
+			/* 194 */return false;
+		/* 195 */if ((hasType()) && (!getType().equals(obj.getType())))
+			/* 196 */return false;
+		/* 197 */if ((hasName() ^ obj.hasName()))
+			/* 198 */return false;
+		/* 199 */if ((hasName()) && (!getName().equals(obj.getName())))
+			/* 200 */return false;
+		/* 201 */return true;
+		/*     */}
+	/*     */
+	/*     */public int hashCode() {
+		/* 205 */int rc = -972308577;
+		/* 206 */if (hasType()) {
+			/* 207 */rc ^= 0x28035A ^ getType().hashCode();
+			/*     */}
+		/* 209 */if (hasName()) {
+			/* 210 */rc ^= 0x24EEAB ^ getName().hashCode();
+			/*     */}
+		/* 212 */return rc;
+		/*     */}
+
+	/*     */
+	/*     */public static enum DestinationType
+	/*     */{
+		/* 12 */QUEUE("QUEUE", 0),
+		/* 13 */TOPIC("TOPIC", 1),
+		/* 14 */TEMP_QUEUE("TEMP_QUEUE", 2),
+		/* 15 */TEMP_TOPIC("TEMP_TOPIC", 3);
+		/*     */
+		/*     */private final String name;
+		/*     */private final int value;
+
+		/*     */
+		/* 21 */private DestinationType(String name, int value) {
+			this.name = name;
+			/* 22 */this.value = value;
+		}
+		/*     */
+		/*     */public final int getNumber()
+		/*     */{
+			/* 26 */return this.value;
+			/*     */}
+		/*     */
+		/*     */public final String toString() {
+			/* 30 */return this.name;
+			/*     */}
+		/*     */
+		/*     */public static DestinationType valueOf(int value) {
+			/* 34 */switch (value) {
+			/*     */case 0:
+					/* 36 */return QUEUE;
+					/*     */case 1:
+					/* 38 */return TOPIC;
+					/*     */case 2:
+					/* 40 */return TEMP_QUEUE;
+					/*     */case 3:
+					/* 42 */return TEMP_TOPIC;
+					/*     */}
+			/* 44 */return null;
+			/*     */}
+		/*     */
+	}
+	/*     */
+}
