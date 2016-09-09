@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<classpath>
-	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jre7"/>
-	<classpathentry kind="lib" path="C:/Users/孔新/Desktop/apache-activemq-5.13.0/lib/slf4j-api-1.7.13.jar"/>
-	<classpathentry kind="lib" path="C:/Users/孔新/Desktop/apache-activemq-5.13.0/activemq-all-5.13.0.jar" sourcepath="C:/Users/孔新/Downloads/activemq-parent-5.13.0-source-release/activemq-parent-5.13.0/activemq-client/src/main/java"/>
-	<classpathentry kind="output" path="bin"/>
-</classpath>
