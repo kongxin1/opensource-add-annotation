@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring accessors="true" comment="Delete 3 elements from project &apos;fastJSON-1.1.17&apos;&#x0D;&#x0A;- Original project: &apos;fastJSON-1.1.17&apos;&#x0D;&#x0A;- Original elements:&#x0D;&#x0A;     LICENSE.txt&#x0D;&#x0A;     MANIFEST.MF&#x0D;&#x0A;     NOTICE.txt" description="Delete elements" element1="src/META-INF/LICENSE.txt" element2="src/META-INF/NOTICE.txt" element3="src/META-INF/MANIFEST.MF" elements="0" flags="589830" id="org.eclipse.jdt.ui.delete" resources="3" stamp="1473450857992" subPackages="false" version="1.0"/>
+</session>

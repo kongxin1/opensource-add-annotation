@@ -1,8 +1,0 @@
-import java.io.File;
-
-public class RemoveNote {
-	public static void main(String argv[]) {
-		File parent = new File("C:/Users/¿×ÐÂ/workspace/active-mq");
-		remove(parent);
-	}
-}

@@ -1,9 +1,0 @@
-import java.io.*;
-public class RemoveNote {
-	public static void main(String argv[]){
-		File parent = new File("C:/Users/¿×ÐÂ/workspace/active-mq");
-		count(parent);
-		System.out.println(num);
-		System.out.println(kx);
-	}
-}
