@@ -26,128 +26,111 @@ import java.util.TreeMap;
  * @author wenshao<szujobs@hotmail.com>
  */
 public class MapSerializer implements ObjectSerializer {
+	public static MapSerializer instance = new MapSerializer();
 
-    public static MapSerializer instance = new MapSerializer();
-
-    @SuppressWarnings({ "rawtypes", "unchecked" })
-    public void write(JSONSerializer serializer, Object object, Object fieldName, Type fieldType) throws IOException {
-        SerializeWriter out = serializer.getWriter();
-
-        if (object == null) {
-            out.writeNull();
-            return;
-        }
-
-        Map<?, ?> map = (Map<?, ?>) object;
-
-        if (out.isEnabled(SerializerFeature.SortField)) {
-        	if (!(map instanceof SortedMap)) {
-	            try {
-	                map = new TreeMap(map);
-	            } catch (Exception ex) {
-	                // skip
-	            }
-        	}
-        }
-        
-        if (serializer.containsReference(object)) {
-        	serializer.writeReference(object);
-            return;
-        }
-
-        SerialContext parent = serializer.getContext();
-        serializer.setContext(parent, object, fieldName);
-        try {
-            out.write('{');
-
-            Class<?> preClazz = null;
-            ObjectSerializer preWriter = null;
-
-            boolean first = true;
-            
-            if (out.isEnabled(SerializerFeature.WriteClassName)) {
-                out.writeFieldName("@type");
-                out.writeString(object.getClass().getName());
-                first = false;
-            }
-            
-            for (Map.Entry entry : map.entrySet()) {
-                Object value = entry.getValue();
-
-                Object entryKey = entry.getKey();
-
-                if (entryKey == null || entryKey instanceof String) {
-                    String key = (String) entryKey;
-                    List<PropertyFilter> propertyFilters = serializer.getPropertyFiltersDirect();
-                    if (propertyFilters != null) {
-                        boolean apply = true;
-                        for (PropertyFilter propertyFilter : propertyFilters) {
-                            if (!propertyFilter.apply(object, key, value)) {
-                                apply = false;
-                                break;
-                            }
-                        }
-
-                        if (!apply) {
-                            continue;
-                        }
-                    }
-
-                    List<NameFilter> nameFilters = serializer.getNameFiltersDirect();
-                    if (nameFilters != null) {
-                        for (NameFilter nameFilter : nameFilters) {
-                            key = nameFilter.process(object, key, value);
-                        }
-                    }
-
-                    List<ValueFilter> valueFilters = serializer.getValueFiltersDirect();
-                    if (valueFilters != null) {
-                        for (ValueFilter valueFilter : valueFilters) {
-                            value = valueFilter.process(object, key, value);
-                        }
-                    }
-
-                    if (value == null) {
-                        if (!serializer.isEnabled(SerializerFeature.WriteMapNullValue)) {
-                            continue;
-                        }
-                    }
-
-                    if (!first) {
-                        out.write(',');
-                    }
-
-                    out.writeFieldName(key, true);
-                } else {
-                    if (!first) {
-                        out.write(',');
-                    }
-
-                    serializer.write(entryKey);
-                    out.write(':');
-                }
-
-                first = false;
-
-                if (value == null) {
-                    out.writeNull();
-                    continue;
-                }
-
-                Class<?> clazz = value.getClass();
-
-                if (clazz == preClazz) {
-                    preWriter.write(serializer, value, entryKey, null);
-                } else {
-                    preClazz = clazz;
-                    preWriter = serializer.getObjectWriter(clazz);
-
-                    preWriter.write(serializer, value, entryKey, null);
-                }
-            }
-        } finally {
-            serializer.setContext(parent);
-        }
-        out.write('}');
-    }
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	/**
+	 * 对map对象作出处理
+	 */
+	public void write(JSONSerializer serializer, Object object, Object fieldName, Type fieldType) throws IOException {
+		SerializeWriter out = serializer.getWriter();
+		if (object == null) {
+			out.writeNull();
+			return;
+		}
+		Map<?, ?> map = (Map<?, ?>) object;
+		// 如果需要排序就是用TreeMap处理
+		if (out.isEnabled(SerializerFeature.SortField)) {
+			if (!(map instanceof SortedMap)) {
+				try {
+					map = new TreeMap(map);
+				} catch (Exception ex) {
+					// skip
+				}
+			}
+		}
+		if (serializer.containsReference(object)) {
+			serializer.writeReference(object);
+			return;
+		}
+		SerialContext parent = serializer.getContext();
+		serializer.setContext(parent, object, fieldName);
+		try {
+			out.write('{');
+			// 这里使用pre变量用于保存之前使用的序列化对象，属于优化加速处理速度
+			Class<?> preClazz = null;
+			ObjectSerializer preWriter = null;
+			boolean first = true;
+			if (out.isEnabled(SerializerFeature.WriteClassName)) {
+				out.writeFieldName("@type");
+				out.writeString(object.getClass().getName());
+				first = false;
+			}
+			for (Map.Entry entry : map.entrySet()) {
+				Object value = entry.getValue();
+				Object entryKey = entry.getKey();
+				if (entryKey == null || entryKey instanceof String) {
+					String key = (String) entryKey;
+					List<PropertyFilter> propertyFilters = serializer.getPropertyFiltersDirect();
+					if (propertyFilters != null) {
+						boolean apply = true;
+						// PropertyFilter用于过滤部分属性，被过滤的属性不转化成JSON
+						for (PropertyFilter propertyFilter : propertyFilters) {
+							if (!propertyFilter.apply(object, key, value)) {
+								apply = false;
+								break;
+							}
+						}
+						if (!apply) {
+							continue;
+						}
+					}
+					List<NameFilter> nameFilters = serializer.getNameFiltersDirect();
+					if (nameFilters != null) {
+						for (NameFilter nameFilter : nameFilters) {
+							key = nameFilter.process(object, key, value);
+						}
+					}
+					List<ValueFilter> valueFilters = serializer.getValueFiltersDirect();
+					if (valueFilters != null) {
+						for (ValueFilter valueFilter : valueFilters) {
+							value = valueFilter.process(object, key, value);
+						}
+					}
+					if (value == null) {
+						if (!serializer.isEnabled(SerializerFeature.WriteMapNullValue)) {
+							continue;
+						}
+					}
+					if (!first) {
+						out.write(',');
+					}
+					out.writeFieldName(key, true);
+				} else {
+					if (!first) {
+						out.write(',');
+					}
+					// 递归序列化对象
+					serializer.write(entryKey);
+					out.write(':');
+				}
+				first = false;
+				if (value == null) {
+					out.writeNull();
+					continue;
+				}
+				Class<?> clazz = value.getClass();
+				if (clazz == preClazz) {
+					preWriter.write(serializer, value, entryKey, null);
+				} else {
+					preClazz = clazz;
+					preWriter = serializer.getObjectWriter(clazz);
+					preWriter.write(serializer, value, entryKey, null);
+				}
+			}
+		} finally {
+			serializer.setContext(parent);
+		}
+		out.write('}');
+	}
 }

@@ -14,146 +14,108 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package org.apache.commons.dbcp;
 
 import java.io.PrintWriter;
 
 /**
  * Configuration settings for handling abandoned db connections.
- *                                                            
- * @author Glenn L. Nielsen           
+ * @author Glenn L. Nielsen
  * @version $Revision: 758745 $ $Date: 2009-03-26 13:02:20 -0400 (Thu, 26 Mar 2009) $
  */
+// 配置处理被遗弃的数据库连接
 public class AbandonedConfig {
+	/**
+	 * Whether or not a connection is considered abandoned and eligible for removal if it has been
+	 * idle longer than the removeAbandonedTimeout
+	 */
+	private boolean removeAbandoned = false;
 
-    /**
-     * Whether or not a connection is considered abandoned and eligible
-     * for removal if it has been idle longer than the removeAbandonedTimeout
-     */
-    private boolean removeAbandoned = false;
+	/**
+	 * Flag to remove abandoned connections if they exceed the removeAbandonedTimeout. Set to true
+	 * or false, default false. If set to true a connection is considered abandoned and eligible for
+	 * removal if it has been idle longer than the removeAbandonedTimeout. Setting this to true can
+	 * recover db connections from poorly written applications which fail to close a connection.
+	 * @return true if abandoned connections are to be removed
+	 */
+	public boolean getRemoveAbandoned() {
+		return (this.removeAbandoned);
+	}
+	/**
+	 * Flag to remove abandoned connections if they exceed the removeAbandonedTimeout. Set to true
+	 * or false, default false. If set to true a connection is considered abandoned and eligible for
+	 * removal if it has been idle longer than the removeAbandonedTimeout. Setting this to true can
+	 * recover db connections from poorly written applications which fail to close a connection.
+	 * @param removeAbandoned true means abandoned connections will be removed
+	 */
+	public void setRemoveAbandoned(boolean removeAbandoned) {
+		this.removeAbandoned = removeAbandoned;
+	}
 
-    /**
-     * Flag to remove abandoned connections if they exceed the
-     * removeAbandonedTimeout.
-     *
-     * Set to true or false, default false.
-     * If set to true a connection is considered abandoned and eligible
-     * for removal if it has been idle longer than the removeAbandonedTimeout.
-     * Setting this to true can recover db connections from poorly written    
-     * applications which fail to close a connection.
-     *
-     * @return true if abandoned connections are to be removed
-     */
-    public boolean getRemoveAbandoned() {
-        return (this.removeAbandoned);
-    }
+	/**
+	 * Timeout in seconds before an abandoned connection can be removed
+	 */
+	private int removeAbandonedTimeout = 300;
 
-    /**
-     * Flag to remove abandoned connections if they exceed the
-     * removeAbandonedTimeout.
-     *
-     * Set to true or false, default false.
-     * If set to true a connection is considered abandoned and eligible   
-     * for removal if it has been idle longer than the removeAbandonedTimeout.
-     * Setting this to true can recover db connections from poorly written
-     * applications which fail to close a connection.
-     *
-     * @param removeAbandoned true means abandoned connections will be
-     *   removed
-     */
-    public void setRemoveAbandoned(boolean removeAbandoned) {
-        this.removeAbandoned = removeAbandoned;
-    }
+	/**
+	 * Timeout in seconds before an abandoned connection can be removed. Defaults to 300 seconds.
+	 * @return abandoned timeout in seconds
+	 */
+	public int getRemoveAbandonedTimeout() {
+		return (this.removeAbandonedTimeout);
+	}
+	/**
+	 * Timeout in seconds before an abandoned connection can be removed. Defaults to 300 seconds.
+	 * @param removeAbandonedTimeout abandoned timeout in seconds
+	 */
+	public void setRemoveAbandonedTimeout(int removeAbandonedTimeout) {
+		this.removeAbandonedTimeout = removeAbandonedTimeout;
+	}
 
-    /**
-     * Timeout in seconds before an abandoned connection can be removed
-     */
-    private int removeAbandonedTimeout = 300;
+	/**
+	 * Determines whether or not to log stack traces for application code which abandoned a
+	 * Statement or Connection.
+	 */
+	private boolean logAbandoned = false;
 
-    /**
-     * Timeout in seconds before an abandoned connection can be removed.
-     *
-     * Defaults to 300 seconds.
-     *
-     * @return abandoned timeout in seconds
-     */
-    public int getRemoveAbandonedTimeout() {
-        return (this.removeAbandonedTimeout);
-    }
+	/**
+	 * Flag to log stack traces for application code which abandoned a Statement or Connection.
+	 * Defaults to false. Logging of abandoned Statements and Connections adds overhead for every
+	 * Connection open or new Statement because a stack trace has to be generated.
+	 * @return boolean true if stack trace logging is turned on for abandoned Statements or
+	 *         Connections
+	 */
+	public boolean getLogAbandoned() {
+		return (this.logAbandoned);
+	}
+	/**
+	 * Flag to log stack traces for application code which abandoned a Statement or Connection.
+	 * Defaults to false. Logging of abandoned Statements and Connections adds overhead for every
+	 * Connection open or new Statement because a stack trace has to be generated.
+	 * @param logAbandoned true turns on abandoned stack trace logging
+	 */
+	public void setLogAbandoned(boolean logAbandoned) {
+		this.logAbandoned = logAbandoned;
+	}
 
-    /**
-     * Timeout in seconds before an abandoned connection can be removed.
-     *
-     * Defaults to 300 seconds.
-     *
-     * @param removeAbandonedTimeout abandoned timeout in seconds
-     */
-    public void setRemoveAbandonedTimeout(int removeAbandonedTimeout) {
-        this.removeAbandonedTimeout = removeAbandonedTimeout;
-    }
+	/**
+	 * PrintWriter to use to log information on abandoned objects.
+	 */
+	private PrintWriter logWriter = new PrintWriter(System.out);
 
-    /**
-     * Determines whether or not to log stack traces for application code
-     * which abandoned a Statement or Connection.
-     */
-    private boolean logAbandoned = false;
-
-    /**
-     * Flag to log stack traces for application code which abandoned
-     * a Statement or Connection.
-     *
-     * Defaults to false.
-     * Logging of abandoned Statements and Connections adds overhead
-     * for every Connection open or new Statement because a stack
-     * trace has to be generated.
-     * 
-     * @return boolean true if stack trace logging is turned on for abandoned
-     *  Statements or Connections
-     *
-     */
-    public boolean getLogAbandoned() {
-        return (this.logAbandoned);
-    }
-
-    /**
-     * Flag to log stack traces for application code which abandoned
-     * a Statement or Connection.
-     *
-     * Defaults to false.
-     * Logging of abandoned Statements and Connections adds overhead
-     * for every Connection open or new Statement because a stack
-     * trace has to be generated.
-     * @param logAbandoned true turns on abandoned stack trace logging
-     *
-     */
-    public void setLogAbandoned(boolean logAbandoned) {
-        this.logAbandoned = logAbandoned;
-    }
-
-    /**
-     * PrintWriter to use to log information on abandoned objects.
-     */
-    private PrintWriter logWriter = new PrintWriter(System.out);
-    
-    /**
-     * Returns the log writer being used by this configuration to log
-     * information on abandoned objects. If not set, a PrintWriter based on
-     * System.out is used.
-     *
-     * @return log writer in use
-     */
-    public PrintWriter getLogWriter() {
-        return logWriter;
-    }
-    
-    /**
-     * Sets the log writer to be used by this configuration to log
-     * information on abandoned objects.
-     * 
-     * @param logWriter The new log writer
-     */
-    public void setLogWriter(PrintWriter logWriter) {
-        this.logWriter = logWriter;
-    }
+	/**
+	 * Returns the log writer being used by this configuration to log information on abandoned
+	 * objects. If not set, a PrintWriter based on System.out is used.
+	 * @return log writer in use
+	 */
+	public PrintWriter getLogWriter() {
+		return logWriter;
+	}
+	/**
+	 * Sets the log writer to be used by this configuration to log information on abandoned objects.
+	 * @param logWriter The new log writer
+	 */
+	public void setLogWriter(PrintWriter logWriter) {
+		this.logWriter = logWriter;
+	}
 }

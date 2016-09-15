@@ -1,4 +1,5 @@
 /target
 /bin
-/.metadata/
-/.recommenders/
+.metadata/
+.recommenders/
+.gitignore

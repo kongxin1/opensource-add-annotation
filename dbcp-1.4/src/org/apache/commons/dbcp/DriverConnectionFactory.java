@@ -14,8 +14,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package org.apache.commons.dbcp;
+
 import java.sql.Connection;
 import java.sql.Driver;
 import java.sql.SQLException;
@@ -27,22 +27,29 @@ import java.util.Properties;
  * @author Rodney Waldhoff
  * @version $Revision: 479137 $ $Date: 2006-11-25 10:51:48 -0500 (Sat, 25 Nov 2006) $
  */
+/**
+ * 根据驱动程序直接获得一个连接对象
+ * @ClassName: DriverConnectionFactory
+ * @Description: TODO
+ * @author: 孔新
+ * @date: 2016年9月13日 下午11:05:02
+ */
 public class DriverConnectionFactory implements ConnectionFactory {
-    public DriverConnectionFactory(Driver driver, String connectUri, Properties props) {
-        _driver = driver;
-        _connectUri = connectUri;
-        _props = props;
-    }
+	public DriverConnectionFactory(Driver driver, String connectUri, Properties props) {
+		_driver = driver;
+		_connectUri = connectUri;
+		_props = props;
+	}
+	public Connection createConnection() throws SQLException {
+		return _driver.connect(_connectUri, _props);
+	}
 
-    public Connection createConnection() throws SQLException {
-        return _driver.connect(_connectUri,_props);
-    }
+	protected Driver _driver = null;
+	protected String _connectUri = null;
+	protected Properties _props = null;
 
-    protected Driver _driver = null;
-    protected String _connectUri = null;
-    protected Properties _props = null;
-
-    public String toString() {
-        return this.getClass().getName() + " [" + String.valueOf(_driver) + ";" + String.valueOf(_connectUri) + ";"  + String.valueOf(_props) + "]";
-    }
+	public String toString() {
+		return this.getClass().getName() + " [" + String.valueOf(_driver) + ";" + String.valueOf(_connectUri) + ";"
+				+ String.valueOf(_props) + "]";
+	}
 }
